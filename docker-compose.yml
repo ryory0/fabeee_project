@@ -3,8 +3,8 @@ services:
   db:
     image: mysql
     environment:
-      - MYSQL_DATABASE=key_type_db  # 修正: MYSQL_DB から MYSQL_DATABASE へ
-      - MYSQL_ROOT_PASSWORD=rolV2N5J
+      - MYSQL_DATABASE=key_type_db 
+      - MYSQL_ROOT_PASSWORD=
   web:
     build: .
     command: python /key_type/myproject/myproject/manage.py runserver 0.0.0.0:8000
