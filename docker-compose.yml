@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+    image: mysql
+    environment:
+      - MYSQL_DATABASE=key_type_db  # 修正: MYSQL_DB から MYSQL_DATABASE へ
+      - MYSQL_ROOT_PASSWORD=rolV2N5J
+  web:
+    build: .
+    command: python /key_type/myproject/myproject/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/key_type/myproject  # ホストのプロジェクトをコンテナ内にマウント
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
