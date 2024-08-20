@@ -6,7 +6,6 @@ class Product(models.Model):
     image = models.ImageField(upload_to='images/')
     recipes = models.ManyToManyField('Recipe', related_name='products')
 
-
 class Recipe(models.Model):
     title = models.CharField(max_length=255)
     image = models.ImageField(upload_to='images/')
@@ -25,3 +24,11 @@ class Comment(models.Model):
     
     class Meta:
         ordering = ["-created_at"]
+
+class News(models.Model):
+    title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='images/')
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
