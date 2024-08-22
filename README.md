@@ -20,7 +20,10 @@ npm list --depth=0
 
 python manage.py runserver 0.0.0.0:8000
 
--compose
+streamlit run Home.py --server.address 0.0.0.0 --server.port 8080
+
+
+- compose
 
 version: "3.8"//docker composerのバージョンの指定
 services:
@@ -37,7 +40,7 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true //ホットリロードを行う設定
 
--dockerfile
+- dockerfile
 
 FROM node:16.13.0-alpine3.12 //dockerHubから持ってくるImageの指定
 ENV NODE_VERSION 14.18.1 //使用するnodeのバージョンの指定
@@ -45,3 +48,8 @@ WORKDIR /front  //docker内に入った時の初期パスの指定
 COPY ./front /front　//ローカル側のファイルをdocker内にコピーする
 EXPOSE 3000　//コンテナの使用ポート指定
 ENV CI=true　//コンテナが勝手に終了してしまわないようにする設定
+
+- git
+
+git fetch
+git rebase origin/main

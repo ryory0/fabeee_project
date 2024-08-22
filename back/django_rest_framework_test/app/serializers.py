@@ -15,12 +15,12 @@ class RecipeSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Recipe
-        fields = ['id', 'title', 'image', 'description', 'comments']
+        fields = ['id', 'title', 'image', 'description', 'ingredients', 'process', 'comments']
 
 class ProductSerializer(serializers.ModelSerializer):
     recipes = serializers.PrimaryKeyRelatedField(many=True, queryset=Recipe.objects.all())
 
     class Meta:
         model = Product
-        fields = ['id', 'title', 'price', 'image', 'recipes']
+        fields = ['id', 'title', 'price', 'image', 'description', 'recipes']
 
